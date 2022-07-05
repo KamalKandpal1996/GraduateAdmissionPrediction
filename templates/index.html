@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html >
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
+<head>
+  <meta charset="UTF-8">
+  <title>ML API</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+
+    <style>
+        h1 {text-align: center;}
+        #pred_button, #features, #output{
+                    text-align: center;
+                     margin-top: 1vh}
+
+    </style>
+
+</head>
+
+<body>
+ <div class="login">
+	<h1>Predict College Probability</h1>
+
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict')}}"method="post">
+
+        <div  id="features" >
+            <input type="text" name="GRE score" placeholder="GRE score(260-340)" required="required" />
+        <input type="text" name="TOEFL score" placeholder="TOEFL score(0-120)" required="required" />
+		<input type="text" name="University_score" placeholder="University Rating(1-5)" required="required" />
+        <input type="text" name="SOP" placeholder="SOP Rating(1-5)" required="required" />
+        <input type="text" name="LOR" placeholder="LOR Rating(1-5)" required="required" />
+        <input type="text" name="CGPA" placeholder="CGPA(out of 10.00)" required="required" />
+        <input type="text" name="Research" placeholder="Research(yes =1 , No= 0)" required="required" />
+        </div>
+
+
+        <br>
+
+        <div id="pred_button" ><button type="submit" class="btn btn-primary btn-block btn-large">Predict</button></div>
+
+    </form>
+
+   <br>
+
+     <div id = "output">
+            {{ prediction_text }}
+     </div>
+
+
+ </div>
+
+
+</body>
+</html>
