@@ -1,3 +1,1 @@
 https://college-prediction-api-ml.herokuapp.com/
-
-https://www.hackerrank.com/kk2123ds?hr_r=1
