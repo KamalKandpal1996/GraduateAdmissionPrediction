@@ -10,10 +10,104 @@
 <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
 
     <style>
-        h1 {text-align: center;}
+
+        *{padding: 0;margin: 0;
+          background-color: #43b9b9;
+
+          }
+
         #pred_button, #features, #output{
                     text-align: center;
                      margin-top: 1vh}
+
+
+      input[type=text], select {
+       width: 100%;
+       padding: 2px 2px;
+       margin: 8px 0;
+       display: inline-block;
+       border: 1px solid #ccc;
+       border-radius: 4px;
+       box-sizing: border-box;
+        }
+
+
+      .R{margin : 1vh;
+        background-color: #eefafa;
+        border-radius: 2vh;
+        padding: 2vh;
+        }
+        
+      .btn-block {
+      margin-top: 2vh;
+      text-align: center;
+      }
+
+      button {
+      width: 100px;
+      padding: 6px;
+      border: none;
+      border-radius: 5px; 
+      background:  #456e6e;
+      font-size: 10px;
+      color: #fff;
+      cursor: pointer;
+      }
+
+      button:hover {
+      background:  #052c2c;
+      }
+
+      h1 {
+      position: absolute;
+      margin: 0;
+      font-size: 25px;
+      color: rgb(0, 0, 0);
+      z-index: 2;
+      line-height: 83px;
+      }
+      
+      .banner {
+      position: relative;
+      height: 20vh;
+      text-align: center;
+      background-size: cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      }
+
+      .banner h1{
+        margin-top: 8vh;
+        font-size: 27.5px;
+      }
+
+
+      .container-1{
+        margin-top: 8vh;
+        justify-content: center;
+        align-items: center;
+        align-content: space-between;
+        display: flex;
+        background-color: #43b9b9;
+        flex-direction: row;
+        border-radius: 4px;
+        flex-wrap: wrap;
+        padding: 2vh;
+      }
+
+      label,input{
+        background-color: #eefafa;
+      }
+
+      .copyright{
+        color: #002254;
+        margin-top: 2vh;
+        text-align: center;
+        font-size: 10px;
+
+      }
 
     </style>
 
@@ -21,26 +115,71 @@
 
 <body>
  <div class="login">
-	<h1>Predict College Probability</h1>
+	<!-- <h1>Predict College Probability</h1> -->
+    <div class="testbox">
+        <form action="/">
+          <div class="banner">
+            <h1>Graduate Admission Probabilty Predictor</h1>
+          </div>
 
      <!-- Main Input For Receiving Query to our ML -->
     <form action="{{ url_for('predict')}}"method="post">
 
         <div  id="features" >
-            <input type="text" name="GRE score" placeholder="GRE score(260-340)" required="required" />
-        <input type="text" name="TOEFL score" placeholder="TOEFL score(0-120)" required="required" />
-		<input type="text" name="University_score" placeholder="University Rating(1-5)" required="required" />
-        <input type="text" name="SOP" placeholder="SOP Rating(1-5)" required="required" />
-        <input type="text" name="LOR" placeholder="LOR Rating(1-5)" required="required" />
-        <input type="text" name="CGPA" placeholder="CGPA(out of 10.00)" required="required" />
-        <input type="text" name="Research" placeholder="Research(yes =1 , No= 0)" required="required" />
-        </div>
 
+          <div class="container-1">
+
+            <div class="R" >
+              <label for="V1">GRE score :</label><br>
+              <input type="text" id="V1" name="GRE score" placeholder="(260-340)" required="required" />
+            </div>
+
+
+            <div class="R">
+              <label for="V2">TOEFL score :</label><br>
+              <input type="text" id = "V2" name="TOEFL score" placeholder="(0-120)" required="required" />
+            </div>  
+
+
+            <div class="R">
+              <label for="V3">University score :</label><br>
+              <input type="text" id="V3" name="University_score" placeholder="(1-5)" required="required" />
+            </div>
+
+
+            <div class="R">
+              <label for="V4">SOP Rating :</label><br>
+              <input type="text" name="SOP" placeholder="(1-5)" required="required" />
+            </div>    
+
+
+
+            <div class="R">
+              <label for="V4">LOR Rating :</label><br>
+              <input type="text" id="V4"  name="LOR" placeholder="(1-5)" required="required" />
+            </div>
+ 
+
+            <div class="R">
+             <label for="V5">CGPA :</label><br>  
+             <input type="text" id="V5" name="CGPA" placeholder="(out of 10.00)" required="required" />
+            </div>
+
+
+            <div class="R">
+              <label for="V6">Research :</label><br>
+              <input type="text" id="V6" name="Research" placeholder="Research(yes =1 , No= 0)" required="required" />
+            </div>
+
+          </div>
+            
+
+        
+        </div>
 
         <br>
 
-        <div id="pred_button" ><button type="submit" class="btn btn-primary btn-block btn-large">Predict</button></div>
-
+        <div id="pred_button" ><button type="submit" class="btn-block">Predict</button></div>
     </form>
 
    <br>
@@ -48,6 +187,11 @@
      <div id = "output">
             {{ prediction_text }}
      </div>
+
+     <div class="copyright">
+      &copy; Kamal Kandpal
+     </div>
+     
 
 
  </div>
